@@ -4,6 +4,7 @@
 
 import subprocess
 import os
+import traceback
 from sds011 import SDS011
 
 
@@ -23,7 +24,7 @@ if __name__ ==  '__main__':
     usbs = get_usb()
     processs = list()
     for port in usbs:
-        print('Using USB {}'.format('port'))
+        print(f'Using USB {port}')
         p = SDS011(port=port, push_mqtt=True, save_data=False, interval=int(os.environ['SDS_INTERVAL']))
         processs.append(p)
     while True:
@@ -32,4 +33,5 @@ if __name__ ==  '__main__':
                 p.run_passive()
             except Exception as e:
                 print(f'Error highest: {p.name} with {e}')
+                print(traceback.format_exc())
                 continue
