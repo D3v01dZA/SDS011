@@ -22,9 +22,8 @@ if __name__ ==  '__main__':
     usbs = get_usb()
     processs = list()
     for port in usbs:
-        p = SDS011(port=port, push_mqtt=True, interval=os.environ['SDS_INTERVAL'])
+        p = SDS011(port=port, push_mqtt=True, interval=int(os.environ['SDS_INTERVAL']))
         processs.append(p)
-        
     while True:
         for p in processs:
             try:
