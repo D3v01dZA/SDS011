@@ -12,6 +12,7 @@ import paho.mqtt.publish as publish
 
 
 #os.environ['TZ'] = 'Asia/Ho_Chi_Minh'
+print('Initializing')
 time.tzset()
 
 # MQTT host, users
