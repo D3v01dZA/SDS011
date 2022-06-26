@@ -124,7 +124,7 @@ class SDS011(object):
 
     def _check_sum(self, bytes_):
         '''total return value == ckc value'''
-        # print(f'Checksum: {bytes_}')
+        print(f'Checksum: {bytes_}')
         calc = 0
         calc = sum(bytes_[2:-2])
         calc = calc & 0xFF
