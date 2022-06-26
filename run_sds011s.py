@@ -3,6 +3,7 @@
 # run multiple SDS011
 
 import subprocess
+import os
 from sds011 import SDS011
 
 
@@ -21,16 +22,13 @@ if __name__ ==  '__main__':
     usbs = get_usb()
     processs = list()
     for port in usbs:
-        p = SDS011(port=port, push_mqtt=False, interval=10)
+        p = SDS011(port=port, push_mqtt=False, interval=os.environ['SDS_INTERVAL'])
         processs.append(p)
-    # for p in processs:
-    #     p.set_active()
         
     while True:
         for p in processs:
             try:
                 p.run_passive()
-                # p.run_query()
             except Exception as e:
                 print(f'Error: {p.name} with {e}')
                 continue

@@ -11,13 +11,13 @@ import socket
 import paho.mqtt.publish as publish
 
 
-os.environ['TZ'] = 'Asia/Ho_Chi_Minh'
+#os.environ['TZ'] = 'Asia/Ho_Chi_Minh'
 time.tzset()
 
 # MQTT host, users
-mqtt = '192.168.1.100'  # change this
-topic = 'sensor/sds011' # and this
-auth = {'username': 'mqtt_user', 'password': 'mqtt_password'} # and these two
+mqtt = os.environ['MQTT_HOST']  # change this
+topic = os.environ['MQTT_TOPIC'] # and this
+auth = {'username': os.environ['MQTT_USERNAME'], 'password': os.environ['MQTT_PASSWORD']} # and these two
 
 
 def time_(): return int(time.time())
