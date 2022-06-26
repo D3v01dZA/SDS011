@@ -19,9 +19,11 @@ def get_usb():
 
 
 if __name__ ==  '__main__':
+    print('Starting')
     usbs = get_usb()
     processs = list()
     for port in usbs:
+        print('Using USB {}'.format('port'))
         p = SDS011(port=port, push_mqtt=True, interval=int(os.environ['SDS_INTERVAL']))
         processs.append(p)
     while True:
