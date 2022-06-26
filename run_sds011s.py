@@ -24,12 +24,12 @@ if __name__ ==  '__main__':
     processs = list()
     for port in usbs:
         print('Using USB {}'.format('port'))
-        p = SDS011(port=port, push_mqtt=True, interval=int(os.environ['SDS_INTERVAL']))
+        p = SDS011(port=port, push_mqtt=True, save_data=False, interval=int(os.environ['SDS_INTERVAL']))
         processs.append(p)
     while True:
         for p in processs:
             try:
                 p.run_passive()
             except Exception as e:
-                print(f'Error: {p.name} with {e}')
+                print(f'Error highest: {p.name} with {e}')
                 continue

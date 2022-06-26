@@ -51,7 +51,7 @@ def internet_ready():
         _ = socket.create_connection((mqtt, 1883), 3)
         return True
     except Exception as e:
-        print("Error {}".format(e))
+        print("Error internet_ready: {}".format(e))
         return False
 
 
@@ -79,7 +79,7 @@ def push_mqtt_server(data):
         if internet_ready():
             publish.single(topic, payload, hostname=mqtt, auth=auth)
     except Exception as e:
-        print('Error: {}'.format(e))
+        print('Error push_mqtt_server: {}'.format(e))
         pass
     return None
 
@@ -241,7 +241,7 @@ class SDS011(object):
             if status == 'set_query':
                 self.passive = True
         except Exception as e:
-            print(f'Error: {e}')
+            print(f'Error set_passive: {e}')
             cmd = self._call_mode('set_query')
             self._send_cmd(cmd=cmd)
         return None
