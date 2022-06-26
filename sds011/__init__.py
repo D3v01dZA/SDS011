@@ -217,7 +217,7 @@ class SDS011(object):
 
     def _read_serial(self, flush=False):
         ''' read and record with matched heads'''
-        # print(f'Bytes in buffer: {self.ser.in_waiting}')
+        print(f'Bytes in buffer: {self.ser.in_waiting}')
         if flush:
             self.ser.reset_input_buffer()
             time.sleep(3)
@@ -226,7 +226,7 @@ class SDS011(object):
         for i, byte in enumerate(recv):
             if byte == SDS011.HEAD:
                 recv_matched += recv[i: i+10]
-        # print(f'Type: {type(recv_matched)}, length: {len(recv_matched)}')
+        print(f'Type: {type(recv_matched)}, length: {len(recv_matched)}')
         if self._check_sum(recv_matched):
             return recv_matched
         return None
