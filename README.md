@@ -3,6 +3,8 @@ Python Interface with Nova Fitness SDS011 sensor, running multiple sensors at on
 
 ## Set up
 - SDS011 (or SDS018) connected with TTL UART adapter (5V)
+- pip install pyseral
+- pip install paho-mqtt
 
 ## How to use the script
 
