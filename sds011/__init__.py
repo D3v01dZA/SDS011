@@ -77,7 +77,7 @@ def push_mqtt_server(data):
 
     try:
         if internet_ready():
-            publish.single(topic, payload, hostname=mqtt, auth=auth)
+            publish.single(topic, payload, hostname=mqtt, auth=auth, retain=True)
     except Exception as e:
         print('Error push_mqtt_server: {}'.format(e))
         pass
